@@ -1,0 +1,33 @@
+<div class="row">
+
+  <div class="col-12" *ngIf="message">
+    <div class="alert alert-dismissible alert-{{messageType}} mx-auto">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      {{ message }}
+    </div>
+  </div>
+
+  <div class="card my-card my-auto mx-auto">
+    <div class="card-header bg-primary text-white">
+      <h4>Login</h4>
+    </div>
+    <div class="card-body">
+      <div class="form">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" id="username" name="username" [(ngModel)]="user.username" placeholder="Username">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password"
+            placeholder="Password">
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary btn-md" (click)="onLoginSubmit()">Login</button>
+          &nbsp;&nbsp;
+          <a [routerLink]="['/register']" class="btn btn-default btn-md">Need an account?</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
