@@ -124,7 +124,7 @@ router.get(
     }
 );
 
-// Get all the hotels from the database
+// Get all the hotels from the database which are not black-list
 router.get("/get-all-hotels-list", (req, res) => {
     Hotel.find({
         black_list: false
@@ -132,6 +132,13 @@ router.get("/get-all-hotels-list", (req, res) => {
         return res.json(hotels);
     });
 });
+
+// get all the hotels from the database
+// router.get("/get-hotels-all", (res, res) => {
+//     Hotel.find().then(hotels => {
+//         return res.json(hotels);
+//     });
+// });
 
 // Get all the hotels by city name
 router.get("/search-hotels/:city", (req, res) => {

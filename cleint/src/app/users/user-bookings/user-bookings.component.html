@@ -1,0 +1,49 @@
+<div class="card">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Hotel</th>
+        <th scope="col">Room Type</th>
+        <th scope="col">Booking Date</th>
+        <th scope="col">From</th>
+        <th scope="col">Till</th>
+        <th scope="col">Booking Status</th>
+        <th scope="col">Checkout Status</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of bookings">
+        <th>Hotel Name</th>
+
+        <td *ngIf="booking.room == 'vila'">Vila</td>
+        <td *ngIf="booking.room == 'one_b'">One Bedroom</td>
+        <td *ngIf="booking.room == 'two_b'">Two Bedroom</td>
+        <td *ngIf="booking.room == 'three_b'">Three Bedroom</td>
+
+        <td>{{ booking.created_at | date }}</td>
+        <td>{{ booking.from_date | date }}</td>
+        <td>{{ booking.to_date | date }}</td>
+
+        <td class="text-success" *ngIf="booking.booking_status; else canceled">Confirmed</td>
+        <ng-template #canceled>
+          <td class="text-danger">Canceled</td>
+        </ng-template>
+
+        <td class="text-success" *ngIf="booking.checkout_status && booking.booking_status; else checkedout">Checked Out</td>
+        <ng-template #checkedout>
+          <td class="text-danger" *ngIf="!booking.booking_status">Not Checked In</td>
+          <td class="text-info" *ngIf="booking.booking_status">Checked In</td>
+        </ng-template>
+
+        <td *ngIf="booking.booking_status && booking.checkout_status"></td>
+        <td *ngIf="!booking.booking_status && !booking.checkout_status"></td>
+        <td *ngIf="booking.booking_status && !booking.checkout_status">
+          <button *ngIf="booking.booking_status" class="btn btn-sm btn-danger" (click)="cancelBooking(booking._id)">Cancel</button>
+          &nbsp;&nbsp;&nbsp;
+          <button *ngIf="booking.booking_status" class="btn btn-sm btn-success" (click)="checkout(booking._id)">Checkout</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

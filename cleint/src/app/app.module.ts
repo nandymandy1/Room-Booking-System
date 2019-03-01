@@ -16,6 +16,7 @@ import { HotelComponent } from "./users/hotel/hotel.component";
 
 // Services imports
 import { AuthService } from "./services/auth.service";
+import { UserBookingsComponent } from './users/user-bookings/user-bookings.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AuthService } from "./services/auth.service";
     ProfileComponent,
     BookingsComponent,
     HotelsComponent,
-    HotelComponent
+    HotelComponent,
+    UserBookingsComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import { LoginComponent } from "./users/login/login.component";
 import { RegisterComponent } from "./users/register/register.component";
 import { ProfileComponent } from "./users/profile/profile.component";
 import { BookingsComponent } from "./users/bookings/bookings.component";
+import { UserBookingsComponent } from "./users/user-bookings/user-bookings.component";
 import { HotelsComponent } from "./users/hotels/hotels.component";
 import { HotelComponent } from "./users/hotel/hotel.component";
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: "profile", component: ProfileComponent },
   { path: "users/hotels", component: HotelsComponent },
   { path: "users/hotels/:id", component: HotelComponent },
+  { path: "users/bookings", component: UserBookingsComponent },
   { path: "users/bookings/:id/:room", component: BookingsComponent }
 ];
 

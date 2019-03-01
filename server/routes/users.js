@@ -148,10 +148,21 @@ router.get('/view-bookings',
   (req, res) => {
     let id = req.user._id
     Booking.viewBooking(id, (err, bookings) => {
-      return res.json(bookings);
+      return res.json({
+        success: true,
+        bookings: bookings
+      });
     });
   }
 );
+
+// Get hotel name by booking Id's
+router.get('/hotels/:id', (req, res) => {
+  let id = req.params.id
+  Hotel.findById(id).then(hotel => {
+    return res.json(hotel.name);
+  });
+});
 
 // Cancel the booking route
 router.get('/cancel-booking/:id',
@@ -186,7 +197,7 @@ router.get('/checkout/:id',
     Booking.checkoutUser(id, (err, success) => {
       if (success) {
         return res.json({
-          message: "You have been checked out successfully",
+          message: "You have been checked out successfully.",
           status: success
         });
       } else {

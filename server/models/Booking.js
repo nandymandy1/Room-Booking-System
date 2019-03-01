@@ -68,3 +68,20 @@ module.exports.checkoutUser = function (id, callback) {
         });
     });
 }
+
+// View all the authenticated user's bookings
+module.exports.viewBooking = function (id, callback) {
+    Booking.find({
+        user_id: id
+    }).sort({
+        created_at: -1
+    }).then(bookings => {
+        callback(null, bookings);
+    });
+
+    // Booking.find({
+    //     user_id: id
+    // }).then(bookings => {
+    //     callback(null, bookings);
+    // });
+}
