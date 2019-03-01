@@ -1,3 +1,42 @@
-<p>
-  bookings works!
-</p>
+<!--Show Full Form-->
+<div class="card card-full">
+  <!--Radio Button for Room Types-->
+  <div class="form-group" *ngIf="bookingType == 'bookrooms'">
+    <div class="custom-control custom-radio">
+      <input type="radio" id="vila" name="customRadio" class="custom-control-input" value="vila" (change)="changeRoom($event)">
+      <label class="custom-control-label" for="vila">Vila</label>
+    </div>
+    <div class="custom-control custom-radio">
+      <input type="radio" id="three_b" name="customRadio" value="three_b" class="custom-control-input" (change)="changeRoom($event)">
+      <label class="custom-control-label" for="three_b">Three Bedroom</label>
+    </div>
+    <div class="custom-control custom-radio">
+      <input type="radio" id="two_b" name="customRadio" value="two_b" class="custom-control-input" (change)="changeRoom($event)">
+      <label class="custom-control-label" for="two_b">Two Bedroom</label>
+    </div>
+    <div class="custom-control custom-radio">
+      <input type="radio" id="one_b" name="customRadio" value="one_b" class="custom-control-input" (change)="changeRoom($event)">
+      <label class="custom-control-label" for="one_b">One Bedroom</label>
+    </div>
+  </div>
+  <!--Radio Button for Room Types-->
+  <div class="form-group">
+    <label for="from_date">From Date</label>
+    <input type="date" (change)="calculateCost()" [(ngModel)]="from_date" name="from_date" id="from_date" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="to_date">Upto Date</label>
+    <input type="date" (change)="calculateCost()" [(ngModel)]="to_date" name="to_date" id="to_date" class="form-control">
+  </div>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-9">
+        <button class="btn btn-success btn-md" [disabled]="cost == undefined" (click)="makeBooking()">Book now</button>
+      </div>
+      <div class="col-3" *ngIf="cost">
+        <h4>Cost: {{cost}}</h4>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Show Full Form-->

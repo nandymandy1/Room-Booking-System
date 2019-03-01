@@ -1,3 +1,89 @@
-<p>
-  hotel works!
-</p>
+<div *ngIf="hotelProfile != null">
+  <div id="carouselExampleControls" class="carousel slide mb-3" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  <h2 class="text-center mb-3 mt-4">{{ hotelProfile.hotel_name }}</h2>
+  <div class="card hotel-card mx-auto">
+    <h3 class="text-center mt-3 mb-3">About Us</h3>
+    <p class="justify-content">{{ hotelProfile.description }}</p>
+  </div>
+  <h5 class="mt-3">Available Rooms</h5>
+  <!--Rooms List with Price-->
+  <ul class="list-group">
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-md-6">
+          Vila: <span class="badge badge-success">{{ hotelProfile.numberOfRoomsAvailable.vila }}</span> of <span class="badge badge-primary">{{
+            hotelProfile.numberOfRooms.vila }}</span> Rooms
+          <br>
+          Price: {{ hotelProfile.price_room.vila }}/- per Night
+        </div>
+        <div class="col-md-6 text-right">
+          <a routerLink="/users/bookings/{{ hotelProfile._id }}/vila" class="btn btn-success btn-sm ml-auto">Book Now</a>
+        </div>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-md-6">
+          Three Bedroom: <span class="badge badge-success">{{ hotelProfile.numberOfRoomsAvailable.three_b }}</span> of
+          <span class="badge badge-primary">{{
+            hotelProfile.numberOfRooms.three_b }}</span> Rooms
+          <br>
+          Price: {{ hotelProfile.price_room.three_b }}/- per Night
+        </div>
+        <div class="col-md-6 text-right">
+          <a routerLink="/users/bookings/{{ hotelProfile._id }}/three_b" class="btn btn-success btn-sm ml-auto">Book
+            Now</a>
+        </div>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-md-6">
+          Two Bedroom: <span class="badge badge-success">{{ hotelProfile.numberOfRoomsAvailable.two_b }}</span> of
+          <span class="badge badge-primary">{{
+            hotelProfile.numberOfRooms.two_b }}</span> Rooms
+          <br>
+          Price: {{ hotelProfile.price_room.two_b }}/- per Night
+        </div>
+        <div class="col-md-6 text-right">
+          <a routerLink="/users/bookings/{{ hotelProfile._id }}/two_b" class="btn btn-success btn-sm ml-auto">Book Now</a>
+        </div>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-md-6">
+          One Bedroom: <span class="badge badge-success">{{ hotelProfile.numberOfRoomsAvailable.one_b }}</span> of
+          <span class="badge badge-primary">{{
+            hotelProfile.numberOfRooms.one_b }}</span> Rooms
+          <br>
+          Price: {{ hotelProfile.price_room.one_b }}/- per Night
+        </div>
+        <div class="col-md-6 text-right">
+          <a routerLink="/users/bookings/{{ hotelProfile._id }}/one_b" class="btn btn-success btn-sm ml-auto">Book Now</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <!--Rooms List with Price-->
+</div>

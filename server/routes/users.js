@@ -130,7 +130,10 @@ router.post(
       Hotel.getPriceAndDecreaseTheRoomAvailability(booking.hotel_id, numberOfDays, booking.room, (err, cost) => {
         booking.cost = cost;
         booking.save().then(booking => {
-          res.json(booking);
+          res.json({
+            booking: booking,
+            success: true
+          });
         });
       });
     });

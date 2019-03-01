@@ -4,16 +4,18 @@
     <div class="form">
       <div class="form-group">
         <input type="text" name="city" [(ngModel)]="cityChoice" class="form-control" placeholder="Search Hotels by City"
-          id="city">
+          id="city" />
       </div>
       <div class="form-group">
-        <button class="btn btn-success btn-md" (click)="getHotels()">Search</button>
+        <button class="btn btn-success btn-md" (click)="getHotels()">
+          Search
+        </button>
       </div>
     </div>
   </div>
 </div>
 
-<div class="row" *ngIf="hotels.length;else no_hotel">
+<div class="row" *ngIf="hotels.length; else no_hotel">
   <div class="col-md-6 col-lg-4 col-sm-12" *ngFor="let hotel of hotels">
     <div class="card mb-3">
       <div class="card-body">
@@ -21,39 +23,69 @@
         <h6 class="card-subtitle text-muted">{{ hotel.city }}</h6>
       </div>
       <img style="height: 200px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22318%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20318%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_158bd1d28ef%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A16pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_158bd1d28ef%22%3E%3Crect%20width%3D%22318%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22129.359375%22%20y%3D%2297.35%22%3EImage%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-        alt="Card image">
+        alt="Card image" />
       <div class="card-body">
         <p class="card-text">{{ hotel.description }}</p>
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
           <b>Number of Vila:</b>
-          <span class="badge badge-success ml-auto">{{ hotel.numberOfRoomsAvailable.vila }}</span> of <span class="badge badge-primary">{{
-            hotel.numberOfRooms.vila }}</span> @ <span class="badge badge-warning ml-auto">Rs {{ hotel.price_room.vila
-            }}/-</span>
+          <span class="badge badge-success ml-auto">{{
+            hotel.numberOfRoomsAvailable.vila
+            }}</span>
+          of
+          <span class="badge badge-primary">{{
+            hotel.numberOfRooms.vila
+            }}</span>
+          @
+          <span class="badge badge-warning ml-auto">Rs {{ hotel.price_room.vila }}/-</span>
         </li>
         <li class="list-group-item">
           <b>Number of One Bedroom:</b>
-          <span class="badge badge-success ml-auto">{{ hotel.numberOfRoomsAvailable.one_b }}</span> of <span class="badge badge-primary">{{
-            hotel.numberOfRooms.one_b }}</span> @ <span class="badge badge-warning ml-auto">Rs {{
-            hotel.price_room.one_b }}/-</span>
+          <span class="badge badge-success ml-auto">{{
+            hotel.numberOfRoomsAvailable.one_b
+            }}</span>
+          of
+          <span class="badge badge-primary">{{
+            hotel.numberOfRooms.one_b
+            }}</span>
+          @
+          <span class="badge badge-warning ml-auto">Rs {{ hotel.price_room.one_b }}/-</span>
         </li>
         <li class="list-group-item">
           <b>Number of Two Bedrooms:</b>
-          <span class="badge badge-success ml-auto">{{ hotel.numberOfRoomsAvailable.two_b }}</span> of <span class="badge badge-primary">{{
-            hotel.numberOfRooms.two_b }}</span> @ <span class="badge badge-warning ml-auto">Rs {{
-            hotel.price_room.two_b }}/-</span>
+          <span class="badge badge-success ml-auto">{{
+            hotel.numberOfRoomsAvailable.two_b
+            }}</span>
+          of
+          <span class="badge badge-primary">{{
+            hotel.numberOfRooms.two_b
+            }}</span>
+          @
+          <span class="badge badge-warning ml-auto">Rs {{ hotel.price_room.two_b }}/-</span>
         </li>
         <li class="list-group-item">
           <b>Number of Three Bedrooms:</b>
-          <span class="badge badge-success ml-auto">{{ hotel.numberOfRoomsAvailable.three_b }}</span> of <span class="badge badge-primary">{{
-            hotel.numberOfRooms.three_b }}</span> @ <span class="badge badge-warning ml-auto">Rs {{
-            hotel.price_room.three_b }}/-</span>
+          <span class="badge badge-success ml-auto">{{
+            hotel.numberOfRoomsAvailable.three_b
+            }}</span>
+          of
+          <span class="badge badge-primary">{{
+            hotel.numberOfRooms.three_b
+            }}</span>
+          @
+          <span class="badge badge-warning ml-auto">Rs {{ hotel.price_room.three_b }}/-</span>
         </li>
       </ul>
       <div class="card-body">
-        <a href="#" class="card-link">Make Booking</a>
-        <a href="#" class="card-link">View Hotel Profile</a>
+        <!-- <button class="btn btn-sm btn-primary" (click)="makeBooking(hotel._id)"> -->
+        <button class="btn btn-sm btn-primary" routerLink="/users/bookings/{{ hotel._id }}/bookrooms">
+          Make Booking
+        </button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-sm btn-success" routerLink="/users/hotels/{{ hotel._id }}">
+          Hotel Info
+        </button>
       </div>
     </div>
   </div>

@@ -104,6 +104,36 @@ const HotelSchema = mongoose.Schema({
     description: {
         type: String,
         required: false
+    },
+    imagePaths: {
+        mainImage: {
+            type: String,
+            required: true
+        },
+        imageOne: {
+            type: String,
+            required: true
+        },
+        imageTwo: {
+            type: String,
+            required: true
+        },
+        imageThree: {
+            type: String,
+            required: true
+        },
+        imageFour: {
+            type: String,
+            required: false
+        },
+        imageFive: {
+            type: String,
+            required: false
+        },
+        imageSix: {
+            type: String,
+            required: false
+        }
     }
 });
 
@@ -159,9 +189,19 @@ module.exports.getHotelByName = function (hotel_name, callback) {
 
 // Get list of all hotels by city
 module.exports.getHotelByCity = function (city, callback) {
+
+    /* Regular Expression Query from MongoDB Example
+        { $or: [{ name: { $regex: new RegExp(query), "$options": "i" } }, 
+        { category: { $regex: new RegExp(query), "$options": "i" } }, 
+        { description: { $regex: new RegExp(query), "$options": "i" } }] }
+    */
+
     const query = {
         $and: [{
-            city: city
+            city: {
+                $regex: new RegExp(city),
+                "$options": "i"
+            }
         }, {
             black_list: false
         }]
