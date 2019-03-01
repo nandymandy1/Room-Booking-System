@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { tap } from "rxjs/operators";
 import "rxjs";
+import { tokenNotExpired } from "angular2-jwt";
 
 @Injectable({
   providedIn: "root"
@@ -9,6 +10,7 @@ import "rxjs";
 export class AuthService {
   BASE_URL = "http://localhost:5000/api/";
   token = "";
+  userType = "";
 
   constructor(private http: HttpClient) {}
 
@@ -95,5 +97,12 @@ export class AuthService {
       Authorization: this.token
     });
     return this.http.get(`${this.BASE_URL}users/profile`, { headers });
+  }
+
+  // Logout the user
+  logout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    localStorage.removeItem("userType");
   }
 }
