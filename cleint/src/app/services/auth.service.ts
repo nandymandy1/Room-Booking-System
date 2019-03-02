@@ -1,8 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { tap } from "rxjs/operators";
-import "rxjs";
-import { tokenNotExpired } from "angular2-jwt";
 
 @Injectable({
   providedIn: "root"

@@ -60,11 +60,11 @@ const checkUserType = function (req, res, next) {
 app.use(checkUserType);
 
 // Defining the Routes
-app.get('/', (req, res) => {
-    res.json({
-        message: "Hello world"
-    });
-});
+// app.get('/', (req, res) => {
+//     res.json({
+//         message: "Hello world"
+//     });
+// });
 
 // Bring in Admin Routes
 const users = require('./routes/users');

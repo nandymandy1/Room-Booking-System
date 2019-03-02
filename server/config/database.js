@@ -5,7 +5,7 @@ if (process.env.NODE_ENV === 'production') {
     }
 } else {
     module.exports = {
-        database: 'mongodb://localhost:27017/rental_app',
+        database: 'mongodb://nandymandy:nandymandy@ds239368.mlab.com:39368/mean-auth-app',
         secret: 'yoursecret'
     }
 }
